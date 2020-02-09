@@ -14,22 +14,23 @@ import { createAction } from '@reduxjs/toolkit';
 
 export const shipAdded = createAction('ship/added');
 export const shipAddedReducer = (state, action) => {
-    state.ships.push(action.payload)
+    state.ships.push(action.payload.ship)
 };
 
 export const shipRemoved = createAction('ship/removed');
 export const shipRemovedReducer = (state, action) => {
-    return state.ships.filter(ship => ship.shipId !== action.payload);
+    return state.ships.filter(ship => ship.shipId !== action.payload.shipId);
 };
 
 export const shipUpdated = createAction('ship/updated');
 export const shipUpdatedReducer = (state, action) => {
     state.ships.forEach(ship => {
-        if (ship.shipId === action.payload.shipId) {
-            ship = {
-                ...ship,
-                ...action.payload.ship
-            }
+        if (ship.shipId === action.payload.ship.shipId) {
+            // Because the state parameter is an Immer proxy, we have to use 
+            // Object.assign, which modifies its first parameter in place.
+            // We can't use spread because it creates a new object and we can't
+            // overwrite the proxy.
+            Object.assign(ship, action.payload.ship);
         }
     })
 };

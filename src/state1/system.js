@@ -15,18 +15,18 @@ import { createAction } from '@reduxjs/toolkit';
 
 export const systemAdded = createAction('system/added');
 export const systemAddedReducer = (state, action) => {
-    state.systems.push(action.payload)
+    state.systems.push(action.payload.system)
 };
 
 export const systemRemoved = createAction('system/removed');
 export const systemRemovedReducer = (state, action) => {
-    return state.systems.filter(system => system.systemId !== action.payload);
+    return state.systems.filter(system => system.systemId !== action.payload.system.systemId);
 };
 
 export const systemUpdated = createAction('system/updated');
 export const systemUpdatedReducer = (state, action) => {
     state.systems.forEach(system => {
-        if (system.systemId === action.payload.systemId) {
+        if (system.systemId === action.payload.system.systemId) {
             system = {
                 ...system,
                 ...action.payload.system

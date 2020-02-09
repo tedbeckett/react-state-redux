@@ -15,22 +15,20 @@ import { createAction } from '@reduxjs/toolkit';
 
 export const fleetAdded = createAction('fleet/added');
 export const fleetAddedReducer = (state, action) => {
-    state.fleets.push(action.payload)
+    state.fleets.push(action.payload.fleet)
 };
 
 export const fleetRemoved = createAction('fleet/removed');
 export const fleetRemovedReducer = (state, action) => {
-    return state.fleets.filter(fleet => fleet.fleetId !== action.payload);
+    return state.fleets.filter(fleet => fleet.fleetId !== action.payload.fleedId);
 };
 
 export const fleetUpdated = createAction('fleet/updated');
 export const fleetUpdatedReducer = (state, action) => {
+    const updatedFleet = action.payload.fleet;
     state.fleets.forEach(fleet => {
-        if (fleet.fleetId === action.payload.fleetId) {
-            fleet = {
-                ...fleet,
-                ...action.payload.fleet
-            }
+        if (fleet.fleetId === updatedFleet.fleetId) {
+            Object.assign(fleet, updatedFleet);
         }
     })
 }
