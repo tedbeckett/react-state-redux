@@ -63,9 +63,7 @@ export function* eventGenerator() {
     generateShips();
     generateFleets();
     const events = createEvents();
-    for (let i = 0; i < events.length; i++) {
-        const event = events[i];
-        console.log('sseGen: yield event ' + JSON.stringify(event));
+    for (let event of events) {
         yield event;
     }
 }
