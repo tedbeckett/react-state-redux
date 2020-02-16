@@ -7,7 +7,9 @@ import { store } from './state1/store';
 import { loadStore } from './loadStore';
 import { startReceivingSse } from './sse';
 
-loadStore();
+console.log('index reload');
+
+// loadStore();
 startReceivingSse();
 
 ReactDOM.render(

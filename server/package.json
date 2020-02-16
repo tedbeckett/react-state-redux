@@ -1,6 +1,7 @@
 {
   "name": "example-create-react-app-express",
   "version": "1.0.0",
+  "type": "module",
   "scripts": {
     "server": "nodemon server.js",
     "client": "cd .. && npm run start",
