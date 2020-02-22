@@ -6,9 +6,9 @@ import ListItemText from '@material-ui/core/ListItemText';
 import '../styles.css';
 
 const FleetListComponent = ({ fleets, selectedFleetId, onFleetSelected }) => (
-  <div className='strikeGroupContainer'>
-    <h3 className='strikeGroupTitle'>Fleets</h3>
-    <List className='strikeGroupList'>
+  <div className='fleetContainer'>
+    <h3 className='fleetTitle'>Fleets</h3>
+    <List className='fleetList'>
       {fleets.map(fleet => (
         <ListItem
           button
@@ -24,9 +24,11 @@ const FleetListComponent = ({ fleets, selectedFleetId, onFleetSelected }) => (
 );
 
 function stateToProps (state) {
-  return { 
-    fleets: state.fleets,
-    selectedFleetId: state.selectedFleetId
+  const { selectedFleetId } = state;
+  const fleets = Object.values(state.fleets.byId);
+  return {
+    fleets,
+    selectedFleetId
    };
 }
 

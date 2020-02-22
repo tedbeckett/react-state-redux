@@ -3,7 +3,7 @@
     flex-direction: row;
 }
 
-.strikeGroupContainer {
+.fleetContainer {
     display: flex;
     flex-direction: column;
     flex-basis: 300px;
@@ -11,24 +11,24 @@
     justify-content: left;
 }
 
-.strikeGroupList {
+.fleetList {
     width: 100%;
     display: flex;
     flex-direction: column;
 } 
 
-.strikeGroupTitle {
+.fleetTitle {
     margin-left: 20px;
 }
 
-.shipContainer {
+.airplaneContainer {
     flex-direction: column;
     max-width: 140px;
     width: 100%;
     text-align: center
 }
 
-.shipList {
+.airplaneList {
     width: 100%;
     display: flex;
     flex-direction: column;

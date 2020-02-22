@@ -27,12 +27,11 @@ function sseHandler(req, res) {
     let stop = false;
     req.on('close', () => stop = true);
     for (const event of eventGenerator()) {
-        console.log('SseSender.send: ' + JSON.stringify(event, null, 2));
+        console.log('SseHandler: send: ' + JSON.stringify(event, null, 2));
         if (stop) {
+            console.log('sseHandler stop');
             break;
         }
-        // const id = this.nextMessageId++;
-        // this.response.write(`id: ${id}\n`);
         res.write(`event: ${event.type}\n`);
         res.write(`data: ${JSON.stringify(event.data)}\n\n`);
     }

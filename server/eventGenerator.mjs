@@ -59,6 +59,9 @@ export function* eventGenerator() {
     systems = [];
     ships = [];
     fleets = [];
+    nextSystemId = 1;
+    nextShipId = 1;
+    nextFleetId = 1;
     generateSystems(27);
     generateShips();
     generateFleets();

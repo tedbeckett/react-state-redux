@@ -3,8 +3,8 @@ import { store } from './state1/store';
 import { fleetSelected } from './state1/fleet';
 import { shipSelected } from './state1/ship';
 import { FleetList } from './components/FleetList';
-import { FleetShips } from './components/FleetShips';
-import { ShipSystems } from './components/ShipSystems';
+import { AirplaneList } from './components/AirplaneList';
+import { SystemList } from './components/SystemList';
 import './styles.css';
 
 export function App() {
@@ -21,18 +21,18 @@ export function App() {
   return (
     <div className='mainContainer'>
       <FleetList
-        className='strikeGroupContainer'
+        className='fleetContainer'
         onFleetSelected={handleFleetSelected} 
       />
-      <FleetShips
-        className='shipList'
+      <AirplaneList
+        className='airplaneList'
         onShipSelected={handleShipSelected}
       />
-      <ShipSystems 
+      <SystemList 
         className='systemList'
       />
       {/* <StrikeGroupShips
-        className='shipContainer'
+        className='airplaneContainer'
         sgId={selectedSgId}
         onShipSelected={setSelectedShipId}
       />

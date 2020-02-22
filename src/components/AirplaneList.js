@@ -5,10 +5,10 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import '../styles.css';
 
-const ShipsComponent = ({ ships, selectedShipId, onShipSelected }) => (
-  <div className='shipContainer'>
+const AirplaneListComponent = ({ ships, selectedShipId, onShipSelected }) => (
+  <div className='airplaneContainer'>
     <h3 className='shipTitle'>Ships</h3>
-    <List className='shipList'>
+    <List className='airplaneList'>
       {ships.map(ship => (
         <ListItem
           button
@@ -24,16 +24,13 @@ const ShipsComponent = ({ ships, selectedShipId, onShipSelected }) => (
 );
 
 function stateToProps(state) {
-  const { fleets, ships, selectedFleetId } = state;
-  const fleetShipIds = fleets
-    .filter(fleet => fleet.fleetId === selectedFleetId)
-    .flatMap(fleet => fleet.shipIds);
-  const fleetShips = ships.filter(ship => fleetShipIds.includes(ship.shipId));
+  const { fleets, ships, selectedFleetId, selectedShipId } = state;
+  const shipIds = selectedFleetId || selectedFleetId === 0 ? fleets.byId[selectedFleetId].shipIds : [];
+  const fleetShips = shipIds.map(shipId => ships.byId[shipId]);
   return {
     ships: fleetShips,
-    selectedShipId: state.selectedShipId
+    selectedShipId
   }
 }
 
-export const FleetShips = connect(stateToProps)(ShipsComponent);
-
+export const AirplaneList = connect(stateToProps)(AirplaneListComponent);

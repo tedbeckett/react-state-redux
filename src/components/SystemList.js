@@ -6,7 +6,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import { Typography } from '@material-ui/core';
 import '../styles.css';
 
-function SystemsComponent({ systems }) {
+function SystemListComponent({ systems }) {
   return (
     <div className='systemContainer'>
       <h3>Systems</h3>
@@ -33,13 +33,12 @@ function SystemsComponent({ systems }) {
 
 function stateToProps(state) {
   const { ships, systems, selectedShipId } = state;
-  const shipSystemIds = ships
-    .filter(ship => ship.shipId === selectedShipId)
-    .flatMap(ship => ship.systemIds);
-  const shipSystems = systems.filter(system => shipSystemIds.includes(system.systemId));
+  const systemIds = selectedShipId || selectedShipId === 0 ? ships.byId[selectedShipId].systemIds : [];
+  let shipSystems = [];
+  systemIds.forEach(systemId => shipSystems.push(systems.byId[systemId]));
   return {
     systems: shipSystems
   }
 }
 
-export const ShipSystems = connect(stateToProps)(SystemsComponent);
+export const SystemList = connect(stateToProps)(SystemListComponent);

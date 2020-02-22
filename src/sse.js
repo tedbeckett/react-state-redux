@@ -21,9 +21,9 @@ export function startReceivingSse() {
     eventSource = new EventSource('http://localhost:3001/events');
 
     eventSource.addEventListener(systemAdded, e => store.dispatch(systemAdded({system: JSON.parse(e.data)})));
-    // addListener(systemRemoved);
-    // addListener(systemUpdated);
-    // addListener(systemSelected);
+    addListener(systemRemoved);
+    addListener(systemUpdated);
+    addListener(systemSelected);
 
     eventSource.addEventListener(shipAdded, e => store.dispatch(shipAdded({ship: JSON.parse(e.data)})));
     addListener(shipRemoved);

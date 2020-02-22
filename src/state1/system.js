@@ -1,6 +1,8 @@
 import { createAction } from '@reduxjs/toolkit';
 
 /**
+ * https://github.com/redux-utilities/flux-standard-action
+ * 
  * Action type naming convention is namespace/operation
  * 
  * Since we are using redux-tools which uses Immer by default,
@@ -15,24 +17,19 @@ import { createAction } from '@reduxjs/toolkit';
 
 export const systemAdded = createAction('system/added');
 export const systemAddedReducer = (state, action) => {
-    state.systems.push(action.payload.system)
+    const { system } = action.payload;
+    state.systems.byId[system.systemId] = system;
 };
 
 export const systemRemoved = createAction('system/removed');
 export const systemRemovedReducer = (state, action) => {
-    return state.systems.filter(system => system.systemId !== action.payload.system.systemId);
+    delete state.systems.byId[action.payload.systemId];
 };
 
 export const systemUpdated = createAction('system/updated');
 export const systemUpdatedReducer = (state, action) => {
-    state.systems.forEach(system => {
-        if (system.systemId === action.payload.system.systemId) {
-            system = {
-                ...system,
-                ...action.payload.system
-            }
-        }
-    })
+    const { system } = action.payload;
+    state.systems.byId[system.systemId] = system;
 }
 
 export const systemSelected = createAction('system/selected');
