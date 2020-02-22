@@ -1,21 +1,25 @@
 let systems = [];
-let ships = [];
+let airplanes = [];
 let fleets = [];
 let nextSystemId = 1;
-let nextShipId = 1;
+let nextAirplaneId = 1;
 let nextFleetId = 1;
 
 function generateSystems(n) {
+    function generateName(j) {
+        return j % 3 === 0 ? 'altimeter' : j % 2 === 0 ? 'compass' : 'gyro';
+    }
+
     for (let i = 0; i < n; i++) {
         systems.push({
-            systemId: nextSystemId,
-            name: `system-${nextSystemId++}`,
-            status: 'ready'
+            systemId: nextSystemId++,
+            name: generateName(i + 1),
+            status: 'good'
         });
     }
 }
 
-function generateShips() {
+function generateAirplanes() {
     let systemIds = [];
     let systemIdGroups = [];
     systems.forEach((system, i) => {
@@ -26,30 +30,30 @@ function generateShips() {
         }
     });
     systemIdGroups.forEach(systemIds => {
-        const ship = {
-            shipId: nextShipId,
-            name: `ship-${nextShipId++}`,
+        const airplane = {
+            airplaneId: nextAirplaneId,
+            name: `airplane-${nextAirplaneId++}`,
             systemIds
         }
-        ships.push(ship);
+        airplanes.push(airplane);
     });
 };
 
 function generateFleets() {
-    let shipIds = [];
-    let shipIdGroups = [];
-    ships.forEach((ship, i) => {
-        shipIds.push(ship.shipId);
-        if (((i + 1) % 3 === 0 && i !== 0) || i === ships.length - 1) {
-            shipIdGroups.push([...shipIds]);
-            shipIds = [];
+    let airplaneIds = [];
+    let airplaneIdGroups = [];
+    airplanes.forEach((airplane, i) => {
+        airplaneIds.push(airplane.airplaneId);
+        if (((i + 1) % 3 === 0 && i !== 0) || i === airplanes.length - 1) {
+            airplaneIdGroups.push([...airplaneIds]);
+            airplaneIds = [];
         };
     });
-    shipIdGroups.forEach(shipIds => {
+    airplaneIdGroups.forEach(airplaneIds => {
         const fleet = {
             fleetId: nextFleetId,
             name: `fleet-${nextFleetId++}`,
-            shipIds
+            airplaneIds
         }
         fleets.push(fleet);
     });
@@ -57,13 +61,13 @@ function generateFleets() {
 
 export function* eventGenerator() {
     systems = [];
-    ships = [];
+    airplanes = [];
     fleets = [];
     nextSystemId = 1;
-    nextShipId = 1;
+    nextAirplaneId = 1;
     nextFleetId = 1;
     generateSystems(27);
-    generateShips();
+    generateAirplanes();
     generateFleets();
     const events = createEvents();
     for (let event of events) {
@@ -80,10 +84,10 @@ function createEvents() {
             data: system
         })
     })
-    ships.forEach(ship => {
+    airplanes.forEach(airplane => {
         events.push({
-            type: 'ship/added',
-            data: ship
+            type: 'airplane/added',
+            data: airplane
         });
     })
     fleets.forEach(fleet => {

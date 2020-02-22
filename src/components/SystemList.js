@@ -2,8 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import List from '@material-ui/core/ListItem';
 import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import { Typography } from '@material-ui/core';
+import ErrorIcon from '@material-ui/icons/Error';
+import CheckOutlinedIcon from '@material-ui/icons/CheckOutlined';
 import '../styles.css';
 
 function SystemListComponent({ systems }) {
@@ -11,33 +14,35 @@ function SystemListComponent({ systems }) {
     <div className='systemContainer'>
       <h3>Systems</h3>
       <List className='systemList'>
-      {systems.map(system => (
-        <ListItem
-          button
-          key={system.systemId}
-        >
-          <ListItemText
-            primary={system.name}
-            secondary={
-              <Typography
-                style={{ color: system.status === 'ready' ? 'green' : 'red', fontWeight: 'strong' }}>
-                {system.status}
-              </Typography>}
-          />
-        </ListItem>
-      ))}
-    </List>
+        {systems.map(system => (
+          <ListItem
+            button
+            key={system.systemId}
+          >
+            <ListItemText
+              primary={system.name}
+            />
+            <ListItemIcon>
+              {
+                system.status === 'ready' ? 
+                  <ErrorIcon color='secondary'/> : 
+                  <CheckOutlinedIcon style={{ color: 'green'}}/>
+              }
+            </ListItemIcon>
+          </ListItem>
+        ))}
+      </List>
     </div>
   )
 };
 
 function stateToProps(state) {
-  const { ships, systems, selectedShipId } = state;
-  const systemIds = selectedShipId || selectedShipId === 0 ? ships.byId[selectedShipId].systemIds : [];
-  let shipSystems = [];
-  systemIds.forEach(systemId => shipSystems.push(systems.byId[systemId]));
+  const { airplanes, systems, selectedAirplaneId } = state;
+  const systemIds = selectedAirplaneId || selectedAirplaneId === 0 ? airplanes.byId[selectedAirplaneId].systemIds : [];
+  let airplaneSystems = [];
+  systemIds.forEach(systemId => airplaneSystems.push(systems.byId[systemId]));
   return {
-    systems: shipSystems
+    systems: airplaneSystems
   }
 }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { store } from './state1/store';
 import { fleetSelected } from './state1/fleet';
-import { shipSelected } from './state1/ship';
+import { airplaneSelected } from './state1/airplane';
 import { FleetList } from './components/FleetList';
 import { AirplaneList } from './components/AirplaneList';
 import { SystemList } from './components/SystemList';
@@ -11,11 +11,11 @@ export function App() {
 
   function handleFleetSelected(fleetId) {
     store.dispatch(fleetSelected({ fleetId }));
-    store.dispatch(shipSelected({ shipId: null }));
+    store.dispatch(airplaneSelected({ airplaneId: null }));
   }
 
-  function handleShipSelected(shipId) {
-    store.dispatch(shipSelected({ shipId }));
+  function handleAirplaneSelected(airplaneId) {
+    store.dispatch(airplaneSelected({ airplaneId }));
   }
 
   return (
@@ -26,19 +26,19 @@ export function App() {
       />
       <AirplaneList
         className='airplaneList'
-        onShipSelected={handleShipSelected}
+        onAirplaneSelected={handleAirplaneSelected}
       />
       <SystemList 
         className='systemList'
       />
-      {/* <StrikeGroupShips
+      {/* <StrikeGroupAirplanes
         className='airplaneContainer'
         sgId={selectedSgId}
-        onShipSelected={setSelectedShipId}
+        onAirplaneSelected={setSelectedAirplaneId}
       />
-      <ShipSystems
+      <AirplaneSystems
         className='systemContainer'
-        shipId={selectedShipId}
+        airplaneId={selectedAirplaneId}
       /> */}
       <div className='mapContainer' />
     </div>

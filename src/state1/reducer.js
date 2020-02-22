@@ -2,8 +2,8 @@ import { createReducer } from '@reduxjs/toolkit';
 import { initialState } from './initialState';
 import { fleetAdded, fleetRemoved, fleetUpdated, fleetSelected } from './fleet';
 import { fleetAddedReducer, fleetRemovedReducer, fleetUpdatedReducer, fleetSelectedReducer } from './fleet';
-import { shipAdded, shipRemoved, shipUpdated, shipSelected } from './ship';
-import { shipAddedReducer, shipRemovedReducer, shipUpdatedReducer, shipSelectedReducer } from './ship';
+import { airplaneAdded, airplaneRemoved, airplaneUpdated, airplaneSelected } from './airplane';
+import { airplaneAddedReducer, airplaneRemovedReducer, airplaneUpdatedReducer, airplaneSelectedReducer } from './airplane';
 import { systemAdded, systemRemoved, systemUpdated, systemSelected } from './system';
 import { systemAddedReducer, systemRemovedReducer, systemUpdatedReducer, systemSelectedReducer } from './system';
 
@@ -14,10 +14,10 @@ export const reducer = createReducer(initialState, {
     [fleetUpdated]: fleetUpdatedReducer,
     [fleetSelected]: fleetSelectedReducer,
 
-    [shipAdded]: shipAddedReducer,
-    [shipRemoved]: shipRemovedReducer,
-    [shipUpdated]: shipUpdatedReducer,
-    [shipSelected]: shipSelectedReducer,
+    [airplaneAdded]: airplaneAddedReducer,
+    [airplaneRemoved]: airplaneRemovedReducer,
+    [airplaneUpdated]: airplaneUpdatedReducer,
+    [airplaneSelected]: airplaneSelectedReducer,
 
     [systemAdded]: systemAddedReducer,
     [systemRemoved]: systemRemovedReducer,

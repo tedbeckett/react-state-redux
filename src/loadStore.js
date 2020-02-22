@@ -1,13 +1,13 @@
 import { store } from './state1/store';
-import { shipAdded, shipUpdated } from './state1/ship';
+import { airplaneAdded, airplaneUpdated } from './state1/airplane';
 import { fleetAdded, fleetUpdated } from './state1/fleet';
 import { systemAdded, systemUpdated } from './state1/system';
 
 let nextSystemId = 1;
-let nextShipId = 1;
+let nextAirplaneId = 1;
 let nextFleetId = 1;
 let fleetMap = new Map();
-let shipMap = new Map();
+let airplaneMap = new Map();
 let systemMap = new Map();
 
 function createSystems(n) {
@@ -23,21 +23,21 @@ function createSystems(n) {
     return systems;
 }
 
-function createShip(systemIds) {
-    const ship = {
-        shipId: nextShipId,
-        name: `ship-${nextShipId++}`,
+function createAirplane(systemIds) {
+    const airplane = {
+        airplaneId: nextAirplaneId,
+        name: `airplane-${nextAirplaneId++}`,
         systemIds
     };
-    shipMap.set(ship.shipId, ship);
-    return ship;
+    airplaneMap.set(airplane.airplaneId, airplane);
+    return airplane;
 };
 
-function createFleet(shipIds) {
+function createFleet(airplaneIds) {
     const fleet = {
         fleetId: nextFleetId,
         name: `fleet-${nextFleetId++}`,
-        shipIds
+        airplaneIds
     }
     fleetMap.set(fleet.fleetId, fleet);
     return fleet;
@@ -52,51 +52,51 @@ function createAndDispatchSystems(numSystems) {
     return systemIds;
 }
 
-function createAndDispatchFleet(shipIds) {
-    const fleet = createFleet(shipIds);
+function createAndDispatchFleet(airplaneIds) {
+    const fleet = createFleet(airplaneIds);
     store.dispatch(fleetAdded({ fleet }));
 }
 
-function createAndDispatchShip(systemIds) {
-    const ship = createShip(systemIds);
-    store.dispatch(shipAdded({ ship }));
-    return ship;
+function createAndDispatchAirplane(systemIds) {
+    const airplane = createAirplane(systemIds);
+    store.dispatch(airplaneAdded({ airplane }));
+    return airplane;
 }
 
 export function loadStore() {
-    let ships = [];
+    let airplanes = [];
     for (let i = 0; i < 9; i++) {
         const systemIds = createAndDispatchSystems(3);
-        const ship = createAndDispatchShip(systemIds);
-        ships.push(ship);
-        if (ships.length % 3 === 0) {
-            const shipIds = ships.map(ship => ship.shipId);
-            createAndDispatchFleet(shipIds);
-            ships.length = 0;
+        const airplane = createAndDispatchAirplane(systemIds);
+        airplanes.push(airplane);
+        if (airplanes.length % 3 === 0) {
+            const airplaneIds = airplanes.map(airplane => airplane.airplaneId);
+            createAndDispatchFleet(airplaneIds);
+            airplanes.length = 0;
         }
     };
     const addSystem = () => {
         const systemIds = createAndDispatchSystems(1);
         const systemId = systemIds[0];
-        const ship = shipMap.get(1);
-        const updatedShip = {
-            ...ship,
-            systemIds: [...ship.systemIds, systemId]
+        const airplane = airplaneMap.get(1);
+        const updatedAirplane = {
+            ...airplane,
+            systemIds: [...airplane.systemIds, systemId]
         }
-        shipMap.set(ship.shipId, updatedShip);
-        store.dispatch(shipUpdated({ship: updatedShip}));
+        airplaneMap.set(airplane.airplaneId, updatedAirplane);
+        store.dispatch(airplaneUpdated({airplane: updatedAirplane}));
     };
     setTimeout(addSystem, 2000);
-    const addShip = () => {
+    const addAirplane = () => {
         const systemIds = createAndDispatchSystems(3);
-        const newShip = createAndDispatchShip(systemIds);
+        const newAirplane = createAndDispatchAirplane(systemIds);
         const fleet = fleetMap.get(1);
         const updatedFleet = {
             ...fleet,
-            shipIds: [...fleet.shipIds, newShip.shipId]
+            airplaneIds: [...fleet.airplaneIds, newAirplane.airplaneId]
         }
         fleetMap.set(fleet.fleetId, updatedFleet);
         store.dispatch(fleetUpdated({ fleet: updatedFleet }));
     }
-    setTimeout(addShip, 4000);
+    setTimeout(addAirplane, 4000);
 };

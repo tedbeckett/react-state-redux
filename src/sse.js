@@ -1,6 +1,6 @@
 import { store } from './state1/store';
 import { fleetAdded, fleetRemoved, fleetUpdated, fleetSelected } from './state1/fleet';
-import { shipAdded, shipRemoved, shipUpdated, shipSelected } from './state1/ship';
+import { airplaneAdded, airplaneRemoved, airplaneUpdated, airplaneSelected } from './state1/airplane';
 import { systemAdded, systemRemoved, systemUpdated, systemSelected } from './state1/system';
 
 let eventSource;
@@ -25,10 +25,10 @@ export function startReceivingSse() {
     addListener(systemUpdated);
     addListener(systemSelected);
 
-    eventSource.addEventListener(shipAdded, e => store.dispatch(shipAdded({ship: JSON.parse(e.data)})));
-    addListener(shipRemoved);
-    addListener(shipUpdated);
-    addListener(shipSelected);
+    eventSource.addEventListener(airplaneAdded, e => store.dispatch(airplaneAdded({airplane: JSON.parse(e.data)})));
+    addListener(airplaneRemoved);
+    addListener(airplaneUpdated);
+    addListener(airplaneSelected);
 
     eventSource.addEventListener(fleetAdded, e => store.dispatch(fleetAdded({fleet: JSON.parse(e.data)})));
     addListener(fleetRemoved);
