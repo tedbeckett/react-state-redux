@@ -11,26 +11,30 @@ import '../styles.css';
 
 function SystemListComponent({ systems }) {
   return (
-    <div className='systemContainer'>
+    <div className='systemList'>
       <h3>Systems</h3>
       <List className='systemList'>
-        {systems.map(system => (
-          <ListItem
-            button
-            key={system.systemId}
-          >
-            <ListItemText
-              primary={system.name}
-            />
-            <ListItemIcon>
-              {
-                system.status === 'ready' ? 
-                  <ErrorIcon color='secondary'/> : 
-                  <CheckOutlinedIcon style={{ color: 'green'}}/>
-              }
-            </ListItemIcon>
-          </ListItem>
-        ))}
+        {systems.map(system => {
+          const systemOk = system.status === 'good';
+          return (
+            <ListItem
+              button
+              key={system.systemId}
+              className='systemContainer'
+            >
+              <ListItemText
+                className='systemText'
+                primary={system.name}
+                secondary={systemOk ? '' : 'offline'}
+              />
+              <ListItemIcon>
+                {systemOk ?
+                  <CheckOutlinedIcon style={{ color: 'green' }} /> :
+                  <ErrorIcon color='secondary' />}
+              </ListItemIcon>
+            </ListItem>
+          )})
+        }
       </List>
     </div>
   )

@@ -1,0 +1,203 @@
+{
+    "systems": [
+        {
+            "systemId" : 1,
+            "name" : "Gyro",
+            "status" : "good"
+        },
+        {
+            "systemId" : 2,
+            "name" : "Altimeter",
+            "status" : "good"
+        },
+        {
+            "systemId" : 3,
+            "name" : "Compass",
+            "status" : "good"
+        },
+        {
+            "systemId" : 4,
+            "name" : "Gyro",
+            "status" : "good"
+        },
+        {
+            "systemId" : 5,
+            "name" : "Altimeter",
+            "status" : "good"
+        },
+        {
+            "systemId" : 6,
+            "name" : "Compass",
+            "status" : "good"
+        },
+        {
+            "systemId" : 7,
+            "name" : "Gyro",
+            "status" : "good"
+        },
+        {
+            "systemId" : 8,
+            "name" : "Altimeter",
+            "status" : "good"
+        },
+        {
+            "systemId" : 9,
+            "name" : "Compass",
+            "status" : "good"
+        },
+        {
+            "systemId" : 10,
+            "name" : "Gyro",
+            "status" : "good"
+        },
+        {
+            "systemId" : 11,
+            "name" : "Altimeter",
+            "status" : "good"
+        },
+        {
+            "systemId" : 12,
+            "name" : "Compass",
+            "status" : "good"
+        },
+        {
+            "systemId" : 13,
+            "name" : "Gyro",
+            "status" : "good"
+        },
+        {
+            "systemId" : 14,
+            "name" : "Altimeter",
+            "status" : "good"
+        },
+        {
+            "systemId" : 15,
+            "name" : "Compass",
+            "status" : "good"
+        },
+        {
+            "systemId" : 16,
+            "name" : "Gyro",
+            "status" : "good"
+        },
+        {
+            "systemId" : 17,
+            "name" : "Altimeter",
+            "status" : "good"
+        },
+        {
+            "systemId" : 18,
+            "name" : "Compass",
+            "status" : "good"
+        },
+        {
+            "systemId" : 19,
+            "name" : "Gyro",
+            "status" : "good"
+        },
+        {
+            "systemId" : 20,
+            "name" : "Altimeter",
+            "status" : "good"
+        },
+        {
+            "systemId" : 21,
+            "name" : "Compass",
+            "status" : "good"
+        },
+        {
+            "systemId" : 22,
+            "name" : "Gyro",
+            "status" : "good"
+        },
+        {
+            "systemId" : 23,
+            "name" : "Altimeter",
+            "status" : "good"
+        },
+        {
+            "systemId" : 24,
+            "name" : "Compass",
+            "status" : "good"
+        },
+        {
+            "systemId" : 25,
+            "name" : "Gyro",
+            "status" : "good"
+        },
+        {
+            "systemId" : 26,
+            "name" : "Altimeter",
+            "status" : "good"
+        },
+        {
+            "systemId" : 27,
+            "name" : "Compass",
+            "status" : "good"
+        }
+    ],
+    "airplanes": [
+        {
+            "airplaneId" : 1,
+            "name" : "Boeing 737",
+            "systemIds" : [1, 2, 3]
+        },
+        {
+            "airplaneId" : 2,
+            "name" : "Boeing 767",
+            "systemIds" : [4, 5, 6]
+        },
+        {
+            "airplaneId" : 3,
+            "name" : "Airbus A230",
+            "systemIds" : [7, 8, 9]
+        },
+        {
+            "airplaneId" : 4,
+            "name" : "Gulfstream 500",
+            "systemIds" : [10, 11, 12]
+        },
+        {
+            "airplaneId" : 5,
+            "name" : "Gulfstream 550",
+            "systemIds" : [13, 14, 15]
+        },
+        {
+            "airplaneId" : 6,
+            "name" : "Gulfstream 600",
+            "systemIds" : [16, 17, 18]
+        },
+        {
+            "airplaneId" : 7,
+            "name" : "Cessna Skyhawk",
+            "systemIds" : [19, 20, 21]
+        },
+        {
+            "airplaneId" : 8,
+            "name" : "Cessna Skylane",
+            "systemIds" : [22, 23, 24]
+        },
+        {
+            "airplaneId" : 9,
+            "name" : "Cessna Denali",
+            "systemIds" : [25, 26, 27]
+        }
+    ],
+    "fleets": [
+        {
+            "fleetId" : 1,
+            "name" : "International",
+            "airplaneIds" : [1, 2, 3]
+        },
+        {
+            "fleetId" : 2,
+            "name" : "Regional",
+            "airplaneIds" : [4, 5, 6]
+        },
+        {
+            "fleetId" : 3,
+            "name" : "Backcountry",
+            "airplaneIds" : [7, 8, 9]
+        }
+    ]
+}

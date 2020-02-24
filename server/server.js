@@ -1,4 +1,4 @@
-import { eventGenerator } from './eventGenerator.mjs';
+import eventGenerator from './eventGenerator.js';
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
@@ -15,7 +15,7 @@ app.get('/events', sseHandler);
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
-function sseHandler(req, res) {
+async function sseHandler(req, res) {
     console.log('Received request for server-sent events');
     // Mandatory headers and http status to keep SSE connection open
     const headers = {
@@ -27,12 +27,20 @@ function sseHandler(req, res) {
     let stop = false;
     req.on('close', () => stop = true);
     for (const event of eventGenerator()) {
-        console.log('SseHandler: send: ' + JSON.stringify(event, null, 2));
+        console.log('SseHandler: send: ' + event.type);
         if (stop) {
-            console.log('sseHandler stop');
             break;
+        }
+        if (event.delay) {
+            await delay(event.delay);
         }
         res.write(`event: ${event.type}\n`);
         res.write(`data: ${JSON.stringify(event.data)}\n\n`);
     }
 }
+
+async function delay(millis) {
+    let promise = new Promise((resolve) => setTimeout(resolve, millis));
+    await promise;
+}
+

@@ -21,25 +21,13 @@ export function App() {
   return (
     <div className='mainContainer'>
       <FleetList
-        className='fleetContainer'
         onFleetSelected={handleFleetSelected} 
       />
       <AirplaneList
-        className='airplaneList'
         onAirplaneSelected={handleAirplaneSelected}
       />
       <SystemList 
-        className='systemList'
       />
-      {/* <StrikeGroupAirplanes
-        className='airplaneContainer'
-        sgId={selectedSgId}
-        onAirplaneSelected={setSelectedAirplaneId}
-      />
-      <AirplaneSystems
-        className='systemContainer'
-        airplaneId={selectedAirplaneId}
-      /> */}
       <div className='mapContainer' />
     </div>
   )

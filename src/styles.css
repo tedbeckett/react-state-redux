@@ -1,14 +1,19 @@
 .mainContainer {
+    display: grid;
+    grid-template-columns: 150px 150px 200px;
+  }
+  
+.systemContainer {
     display: flex;
     flex-direction: row;
-}
-
+    justify-content: flex-start;
+  }
+  
 .fleetContainer {
-    display: flex;
+    /* display: flex;
     flex-direction: column;
-    flex-basis: 300px;
-    width: 400px;
-    justify-content: left;
+    flex-basis: 300px; */
+    width: 100%;
 }
 
 .fleetList {
@@ -22,8 +27,6 @@
 }
 
 .airplaneContainer {
-    flex-direction: column;
-    max-width: 140px;
     width: 100%;
     text-align: center
 }
@@ -41,10 +44,14 @@
 }
 
 .systemContainer {
-    flex-direction: column;
-    max-width: 150px;
+    flex-direction: row;
+    max-width: 250px;
     width: 100%;
     text-align: center
+}
+
+.systemText {
+    margin: 8px;
 }
 
 .mapContainer {
