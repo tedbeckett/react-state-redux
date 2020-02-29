@@ -27,11 +27,11 @@ function SystemListComponent({ systems }) {
                 primary={system.name}
                 secondary={systemOk ? '' : 'offline'}
               />
-              <ListItemIcon>
+              {/* <ListItemIcon>
                 {systemOk ?
                   <CheckOutlinedIcon style={{ color: 'green' }} /> :
                   <ErrorIcon color='secondary' />}
-              </ListItemIcon>
+              </ListItemIcon> */}
             </ListItem>
           )})
         }
@@ -41,7 +41,7 @@ function SystemListComponent({ systems }) {
 };
 
 function stateToProps(state) {
-  const { airplanes, systems, selectedAirplaneId } = state;
+  const { entities: { airplanes, systems }, ui: { selectedAirplaneId } } = state;
   const systemIds = selectedAirplaneId || selectedAirplaneId === 0 ? airplanes.byId[selectedAirplaneId].systemIds : [];
   let airplaneSystems = [];
   systemIds.forEach(systemId => airplaneSystems.push(systems.byId[systemId]));

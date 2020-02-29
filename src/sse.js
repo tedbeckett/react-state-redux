@@ -20,9 +20,11 @@ export function startReceivingSse() {
     console.log('Creating sse connection');
     eventSource = new EventSource('http://localhost:3001/events');
 
-    eventSource.addEventListener(systemAdded, e => store.dispatch(systemAdded({system: JSON.parse(e.data)})));
+    eventSource.addEventListener(
+        systemAdded, e => store.dispatch(systemAdded({system: JSON.parse(e.data)})));
     addListener(systemRemoved);
-    addListener(systemUpdated, e => store.dispatch(systemUpdated({system: JSON.parse(e.data)})));
+    addListener(
+        systemUpdated, e => store.dispatch(systemUpdated({system: JSON.parse(e.data)})));
     addListener(systemSelected);
 
     eventSource.addEventListener(airplaneAdded, e => store.dispatch(airplaneAdded({airplane: JSON.parse(e.data)})));

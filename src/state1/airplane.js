@@ -15,21 +15,21 @@ import { createAction } from '@reduxjs/toolkit';
 export const airplaneAdded = createAction('airplane/added');
 export const airplaneAddedReducer = (state, action) => {
     const { airplane } = action.payload;
-    state.airplanes.byId[airplane.airplaneId] = airplane;
+    state.entities.airplanes.byId[airplane.airplaneId] = airplane;
 };
 
 export const airplaneRemoved = createAction('airplane/removed');
 export const airplaneRemovedReducer = (state, action) => {
-    delete state.airplanes.byId[action.payload.airplaneId];
+    delete state.entities.airplanes.byId[action.payload.airplaneId];
 };
 
 export const airplaneUpdated = createAction('airplane/updated');
 export const airplaneUpdatedReducer = (state, action) => {
     const { airplane } = action.payload.airplane;
-    state.airplanes.byId[airplane.airplaneId] = airplane;
+    state.entities.airplanes.byId[airplane.airplaneId] = airplane;
 };
 
 export const airplaneSelected = createAction('airplane/selected');
 export const airplaneSelectedReducer = (state, action) => {
-    state.selectedAirplaneId = action.payload.airplaneId;
+    state.ui.selectedAirplaneId = action.payload.airplaneId;
 };

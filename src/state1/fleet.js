@@ -16,22 +16,23 @@ import { createAction } from '@reduxjs/toolkit';
 export const fleetAdded = createAction('fleet/added');
 export const fleetAddedReducer = (state, action) => {
     const { fleet } = action.payload;
-    state.fleets.byId[fleet.fleetId] = fleet;
+    const { entities: { fleets } } = state;
+    fleets.byId[fleet.fleetId] = fleet;
 };
 
 export const fleetRemoved = createAction('fleet/removed');
 export const fleetRemovedReducer = (state, action) => {
-    delete state.fleets.byId[action.payload.fleetId];
+    delete state.entities.fleets.byId[action.payload.fleetId];
 };
 
 export const fleetUpdated = createAction('fleet/updated');
 export const fleetUpdatedReducer = (state, action) => {
     const { fleet } = action.payload;
-    state.fleets.byId[fleet.fleetId] = fleet;
+    state.entities.fleets.byId[fleet.fleetId] = fleet;
 }
 
 export const fleetSelected = createAction('fleet/selected');
 export const fleetSelectedReducer = (state, action) => {
-    state.selectedFleetId = action.payload.fleetId;
+    state.ui.selectedFleetId = action.payload.fleetId;
 }
 

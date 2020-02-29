@@ -1,14 +1,18 @@
 export const initialState = {
-    fleets: {
-        byId: {}
+    entities: {
+        fleets: {
+            byId: {}
+        },
+        airplanes: {
+            byId: {}
+        },
+        systems: {
+            byId: {}
+        }
     },
-    airplanes: {
-        byId: {}
-    },
-    systems: {
-        byId: {}
-    },
-    selectedFleetId: null,
-    selectedAirplaneId: null,
-    selectedSystemId: null
+    ui: {
+        selectedFleetId: null,
+        selectedAirplaneId: null,
+        selectedSystemId: null    
+    }
 }

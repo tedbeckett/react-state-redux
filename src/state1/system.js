@@ -18,18 +18,18 @@ import { createAction } from '@reduxjs/toolkit';
 export const systemAdded = createAction('system/added');
 export const systemAddedReducer = (state, action) => {
     const { system } = action.payload;
-    state.systems.byId[system.systemId] = system;
+    state.entities.systems.byId[system.systemId] = system;
 };
 
 export const systemRemoved = createAction('system/removed');
 export const systemRemovedReducer = (state, action) => {
-    delete state.systems.byId[action.payload.systemId];
+    delete state.entities.systems.byId[action.payload.systemId];
 };
 
 export const systemUpdated = createAction('system/updated');
 export const systemUpdatedReducer = (state, action) => {
     const { system } = action.payload;
-    state.systems.byId[system.systemId] = system;
+    state.entities.systems.byId[system.systemId] = system;
 }
 
 export const systemSelected = createAction('system/selected');

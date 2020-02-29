@@ -1,6 +1,6 @@
 .mainContainer {
     display: grid;
-    grid-template-columns: 150px 150px 200px;
+    grid-template-columns: 150px 200px 200px;
   }
   
 .systemContainer {
@@ -13,6 +13,7 @@
     /* display: flex;
     flex-direction: column;
     flex-basis: 300px; */
+    /* text-align: center; */
     width: 100%;
 }
 
@@ -23,7 +24,7 @@
 } 
 
 .fleetTitle {
-    margin-left: 20px;
+    margin-left: 50px;
 }
 
 .airplaneContainer {
@@ -35,6 +36,10 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+}
+
+.airplaneTitle {
+    margin-left: -50px;
 }
 
 .systemList {
@@ -50,9 +55,9 @@
     text-align: center
 }
 
-.systemText {
+/* .systemText {
     margin: 8px;
-}
+} */
 
 .mapContainer {
     flex-direction: column;
