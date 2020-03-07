@@ -24,7 +24,7 @@ const AirplaneListComponent = ({ airplanes, selectedAirplaneId, onAirplaneSelect
 );
 
 function stateToProps(state) {
-  const { entities: { fleets, airplanes }, ui: { selectedFleetId, selectedAirplaneId } } = state;
+  const { fleets, airplanes, ui: { selectedFleetId, selectedAirplaneId } } = state;
   const airplaneIds = selectedFleetId || selectedFleetId === 0 ? fleets.byId[selectedFleetId].airplaneIds : [];
   const fleetAirplanes = airplaneIds.map(airplaneId => airplanes.byId[airplaneId]);
   return {

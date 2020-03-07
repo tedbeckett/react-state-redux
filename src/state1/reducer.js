@@ -9,6 +9,7 @@ import { systemAddedReducer, systemRemovedReducer, systemUpdatedReducer, systemS
 
 
 export const reducer = createReducer(initialState, {
+    // Make use of ecma-2015 computed property names
     [fleetAdded]: fleetAddedReducer,
     [fleetRemoved]: fleetRemovedReducer,
     [fleetUpdated]: fleetUpdatedReducer,

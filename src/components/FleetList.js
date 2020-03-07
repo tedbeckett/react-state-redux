@@ -25,7 +25,7 @@ const FleetListComponent = ({ fleets, selectedFleetId, onFleetSelected }) => (
 
 function stateToProps (state) {
   const { ui: { selectedFleetId } } = state;
-  const fleets = Object.values(state.entities.fleets.byId);
+  const fleets = Object.values(state.fleets.byId);
   return {
     fleets,
     selectedFleetId

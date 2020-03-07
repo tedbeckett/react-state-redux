@@ -15,7 +15,8 @@ function SystemListComponent({ systems }) {
       <h3>Systems</h3>
       <List className='systemList'>
         {systems.map(system => {
-          const systemOk = system.status === 'good';
+          const { name, status } = system;
+          const text = name + (status === 'good' ? '' : ' - offline');
           return (
             <ListItem
               button
@@ -24,14 +25,8 @@ function SystemListComponent({ systems }) {
             >
               <ListItemText
                 className='systemText'
-                primary={system.name}
-                secondary={systemOk ? '' : 'offline'}
+                primary={text}
               />
-              {/* <ListItemIcon>
-                {systemOk ?
-                  <CheckOutlinedIcon style={{ color: 'green' }} /> :
-                  <ErrorIcon color='secondary' />}
-              </ListItemIcon> */}
             </ListItem>
           )})
         }
@@ -41,7 +36,7 @@ function SystemListComponent({ systems }) {
 };
 
 function stateToProps(state) {
-  const { entities: { airplanes, systems }, ui: { selectedAirplaneId } } = state;
+  const { airplanes, systems, ui: { selectedAirplaneId } } = state;
   const systemIds = selectedAirplaneId || selectedAirplaneId === 0 ? airplanes.byId[selectedAirplaneId].systemIds : [];
   let airplaneSystems = [];
   systemIds.forEach(systemId => airplaneSystems.push(systems.byId[systemId]));
