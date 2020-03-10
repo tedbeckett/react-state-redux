@@ -7,7 +7,6 @@ const systemSlice = createSlice({
     },
     reducers: {
         added: (state, action) => {
-            console.log("add system: " + JSON.stringify(action.payload, null, 2));
             const { system } = action.payload;
             state.byId[system.systemId] = system;
         },
@@ -15,7 +14,6 @@ const systemSlice = createSlice({
             delete state.byId[action.payload.systemId];
         },
         updated: (state, action) => {
-            console.log("update system: " + JSON.stringify(action.payload, null, 2));
             const { system } = action.payload;
             state.byId[system.systemId] = system;
         }

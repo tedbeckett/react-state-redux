@@ -27,7 +27,7 @@ async function sseHandler(req, res) {
     let stop = false;
     req.on('close', () => stop = true);
     for (const event of eventGenerator()) {
-        console.log('SseHandler: send: ' + event.type);
+        console.info('Send: ' + event.type);
         if (stop) {
             break;
         }

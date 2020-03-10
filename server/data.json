@@ -102,22 +102,22 @@
         },
         {
             "systemId" : 21,
-            "name" : "Compass",
+            "name" : "Variometer",
             "status" : "good"
         },
         {
             "systemId" : 22,
-            "name" : "Gyro",
+            "name" : "Heading",
             "status" : "good"
         },
         {
             "systemId" : 23,
-            "name" : "Altimeter",
+            "name" : "Turn&Slip",
             "status" : "good"
         },
         {
             "systemId" : 24,
-            "name" : "Compass",
+            "name" : "VOR",
             "status" : "good"
         },
         {

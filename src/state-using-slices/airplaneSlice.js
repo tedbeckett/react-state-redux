@@ -22,6 +22,4 @@ const airplaneSlice = createSlice({
 
 export const { added, removed, updated } = airplaneSlice.actions;
 
-console.log('airplaneslice: ' + JSON.stringify(airplaneSlice, null, 2));
-
 export const { reducer } = airplaneSlice;
