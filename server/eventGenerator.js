@@ -35,11 +35,9 @@ function createEvents() {
         {
             type: 'system/updated',
             data: {
-                system: {
-                    "systemId": 1,
-                    "name": "Gyro",
-                    "status": "bad"
-                }
+                "systemId": 1,
+                "name": "Gyro",
+                "status": "bad"
             },
             delay: 3000
         }

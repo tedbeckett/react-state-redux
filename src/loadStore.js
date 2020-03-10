@@ -1,4 +1,4 @@
-import { store } from './state1/store';
+import { store } from './store';
 import { airplaneAdded, airplaneUpdated } from './state1/airplane';
 import { fleetAdded, fleetUpdated } from './state1/fleet';
 import { systemAdded, systemUpdated } from './state1/system';

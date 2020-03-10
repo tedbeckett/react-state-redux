@@ -1,7 +1,7 @@
 import React from 'react';
-import { store } from './state1/store';
-import { fleetSelected } from './state1/fleet';
-import { airplaneSelected } from './state1/airplane';
+import { store } from './store';
+import { fleetSelected } from './state-using-slices/uiSlice';
+import { airplaneSelected } from './state-using-slices/uiSlice';
 import { FleetList } from './components/FleetList';
 import { AirplaneList } from './components/AirplaneList';
 import { SystemList } from './components/SystemList';

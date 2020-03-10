@@ -37,7 +37,8 @@ function SystemListComponent({ systems }) {
 
 function stateToProps(state) {
   const { airplanes, systems, ui: { selectedAirplaneId } } = state;
-  const systemIds = selectedAirplaneId || selectedAirplaneId === 0 ? airplanes.byId[selectedAirplaneId].systemIds : [];
+  const isSelected = selectedAirplaneId || selectedAirplaneId === 0
+  const systemIds = isSelected ? airplanes.byId[selectedAirplaneId].systemIds : [];
   let airplaneSystems = [];
   systemIds.forEach(systemId => airplaneSystems.push(systems.byId[systemId]));
   return {
